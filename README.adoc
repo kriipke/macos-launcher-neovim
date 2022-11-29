@@ -27,10 +27,14 @@ Once you have the script in hand, launch the Automator.app via Spotlight search 
 
 It should look something like this:
 
-image::screenshot.png[Automator.app Configuration]
+image::screenshot-config.png[Automator.app Configuration]
 
 Change the name at the top to something like `nvim.app` and save it. By default it will ask you to save it a folder designated for Automation files - that's fine.
 
 After saving it, go ahead and select File > Export and you will be re-prompted to save the file. This time we're going to save it directly in the `Applications` folder.
 
 That's it! You should now be able to pull it up and finder and add it the to dock like the rest of your apps. Enjoy!
+
+Here's a preview of what it looks like with the config included but you can easily change it.
+
+image::screenshot-result.png[Resulting Terminal]
