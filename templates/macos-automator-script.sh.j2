@@ -1,0 +1,24 @@
+# IMPORTANT: This script is inserted into part of a macOS Automator application launcher. For that reason, there is no shebang line at the top. However, this script will not run properly unless it is run with bash (not sh), due to the process substitution used in the last line. Make sure you set the configurator in the macOS Automator application to use '/bin/bash' from the "Shell" dropdown above the text.
+
+read -r -d '' NVIM_CONFIG <<'EOF'
+	{% include "init.vim.j2" %}
+EOF
+
+read -r -d '' KITTY_CONFIG <<'EOF'
+	{% include "kitty.conf.j2" %}
+EOF
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ -r /opt/homebrew/bin ]; then
+	PATH="/opt/homebrew/bin:$PATH"
+fi
+
+export EDITOR=/opt/homebrew/bin/nvim
+export VISUAL=/opt/homebrew/bin/nvim
+
+
+echo "$NVIM_CONFIG" > /tmp/neovim-kitty-launcher.conf
+kitty --config <(echo "$KITTY_CONFIG") nvim -u /tmp/neovim-kitty-launcher.conf

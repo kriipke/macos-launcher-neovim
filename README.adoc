@@ -1,0 +1,36 @@
+= Neovim / Kitty launcher for macOS
+
+The following repository contains the tools to use your existing `kitty` and `neovim` init files to create a launcher allowing you to acccess neovim in a nice terminal emulator as you would any other application in macOS.
+
+== Instructions
+
+=== Path I
+
+. Drop your `init.vim` and your `kitty.conf` into the `./config/` directory.
+. Run `python3 -m venv venv && source ./venv/bin/activate`
+. Install the depednencies with `pip install -r requirements.txt`
+. Run the `build-script.py` file as follows:
+
+	python ./build-script.py
+
+This will produce a script at the top level of the respository named `macos-automator-script.sh`
+
+=== Path II
+
+Once you have the script in hand, launch the Automator.app via Spotlight search or whatever way is easiest to you.
+
+. Select File > New
+. When prompted, choose "Application" as the automation type.
+. On the left hand side of the screen you'll see a list of available actions you can insert into the automation. Search the list for "Run Shell Script" and double click it to add it to the Automation.
+. You will be prompted for two pieces of information. One is a dropdown asking you which shell to select - choose `/bin/bash`
+. The second is the actual script itself. This is the script we generated in Part I. Just open it in a text editor and copy and paste the entire script into the textbox in the Automator.app.
+
+It should look something like this:
+
+img:screenshot.png[Automator.app Configuration]
+
+Change the name at the top to something like `nvim.app` and save it. By default it will ask you to save it a folder designated for Automation files - that's fine.
+
+After saving it, go ahead and select File > Export and you will be re-prompted to save the file. This time we're going to save it directly in the `Applications` folder.
+
+That's it! You should now be able to pull it up and finder and add it the to dock like the rest of your apps. Enjoy!
