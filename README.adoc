@@ -27,7 +27,7 @@ Once you have the script in hand, launch the Automator.app via Spotlight search 
 
 It should look something like this:
 
-img:screenshot.png[Automator.app Configuration]
+image::screenshot.png[Automator.app Configuration]
 
 Change the name at the top to something like `nvim.app` and save it. By default it will ask you to save it a folder designated for Automation files - that's fine.
 
