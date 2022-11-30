@@ -45,7 +45,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'joenye/coc-cfn-lint'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-let g:python3_host_prog = expand('/usr/bin/python3')
+let g:python3_host_prog = expand('~/.config/nvim/env/bin/python3')
 syntax on
 color dracula
 set termguicolors

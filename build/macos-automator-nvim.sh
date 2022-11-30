@@ -15,7 +15,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-journal'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'zaki/zazen'
-Plug 'yuttie/hydrangea-vim'
+Plug 'yuttie/hydrangea-vim'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'rhysd/vim-color-spring-night'
 Plug 'fladson/vim-kitty'
@@ -289,9 +289,14 @@ if [ -r /opt/homebrew/bin ]; then
 	PATH="/opt/homebrew/bin:$PATH"
 fi
 
-export EDITOR=/opt/homebrew/bin/nvim
-export VISUAL=/opt/homebrew/bin/nvim
 
+if [ -r /opt/homebrew/manpages ]; then
+	MANPATH="/opt/homebrew/manpages:$MANPATH"
+fi
+
+export MANPATH PATH
 
 echo "$NVIM_CONFIG" > /tmp/neovim-kitty-launcher.conf
-kitty -c <(echo "$KITTY_CONFIG") nvim -u /tmp/neovim-kitty-launcher.conf
+/Applications/kitty.app/Contents/MacOS/kitty --config <(cat "$KITTY_CONFIG") --hold /bin/zsh -c nvim -u /tmp/neovim-kitty-launcher.conf; exit;
+
+#/Applications/kitty.app/Contents/MacOS/kitty -c <(echo "$KITTY_CONFIG") nvim -u /tmp/neovim-kitty-launcher.conf

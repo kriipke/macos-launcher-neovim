@@ -5,12 +5,11 @@ import os
 
 config_files = [ "init.vim", "kitty.conf"]
 scripts = [ "macos-automator-kitty.sh", "macos-automator-nvim.sh"]
-}
 
 # build templates 
 def renderTemplate(configFile):
-    config_path = os.path.relpath('config/%s'.format(configFile)
-    template_path = os.path.relpath('template/%s.j2'.format(configFile)
+    config_path = os.path.relpath('config/%s'.format(configFile))
+    template_path = os.path.relpath('template/%s.j2'.format(configFile))
 
     if os.path.isFile(config_path):
         with open(config_path, 'r') as input_file:
@@ -22,7 +21,7 @@ def renderTemplate(configFile):
                       output_file.write(line)
                   output_file.write('{% endraw %}\n')
     else:
-      Throw Exception
+        Throw Exception
 
 
 def makeTemplates(config_files)
@@ -50,5 +49,8 @@ def main():
         renderScript(script)
 
 if __name__ == "__main__":
+    renderTemplate('init.vim')
+    renderTemplate('kitty.conf')
+
     main
 
