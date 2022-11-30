@@ -1,6 +1,6 @@
 = Neovim / Kitty launcher for macOS
 
-:imagesdir: doc/
+:imagesdir: docs/
 
 The following repository contains the tools to use your existing `kitty` and `neovim` init files to create a launcher allowing you to acccess neovim in a nice terminal emulator as you would any other application in macOS.
 

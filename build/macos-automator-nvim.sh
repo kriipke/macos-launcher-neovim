@@ -1,7 +1,6 @@
 # IMPORTANT: This script is inserted into part of a macOS Automator application launcher. For that reason, there is no shebang line at the top. However, this script will not run properly unless it is run with bash (not sh), due to the process substitution used in the last line. Make sure you set the configurator in the macOS Automator application to use '/bin/bash' from the "Shell" dropdown above the text.
 
 read -r -d '' NVIM_CONFIG <<'EOF'
-	
 "let g:deoplete#enable_at_startup = 1
 let g:tagbar_ctags_bin=expand('/opt/homebrew/bin/ctags')
 call plug#begin()
@@ -49,7 +48,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'joenye/coc-cfn-lint'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-let g:python3_host_prog = expand('/usr/bin/python3')
+let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
 syntax on
 color dracula
 set termguicolors
@@ -197,7 +196,6 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 let g:airline_theme='badwolf'
 color zazen
-IndentLinesEnable
 EOF
 
 read -r -d '' KITTY_CONFIG <<'EOF'
@@ -236,9 +234,7 @@ active_border_color #444444
 inactive_border_color #222222
 inactive_text_alpha 0.75
 tab_bar_style powerline
-background					#000000
 foreground					#c4c4b5
-selection_background		#666666
 selection_foreground		#000000
 background_opacity			0.75
 dynamic_background_opacity 	yes
@@ -278,7 +274,6 @@ map kitty_mod+escape kitty_shell window
 map kitty_mod+f2 edit_config_file
 map kitty_mod+f5 load_config /path/to/alternative/kitty.conf
 map kitty_mod+f1 launch --stdin-source=@screen_scrollback --stdin-add-formatting less +G -R
-
 EOF
 
 if [ -x /usr/libexec/path_helper ]; then
@@ -297,6 +292,6 @@ fi
 export MANPATH PATH
 
 echo "$NVIM_CONFIG" > /tmp/neovim-kitty-launcher.conf
-/Applications/kitty.app/Contents/MacOS/kitty --config <(cat "$KITTY_CONFIG") --hold /bin/zsh -c nvim -u /tmp/neovim-kitty-launcher.conf; exit;
+/Applications/kitty.app/Contents/MacOS/kitty -c <(cat "$KITTY_CONFIG") /bin/zsh -c nvim -u /tmp/neovim-kitty-launcher.conf; exit;
 
 #/Applications/kitty.app/Contents/MacOS/kitty -c <(echo "$KITTY_CONFIG") nvim -u /tmp/neovim-kitty-launcher.conf
