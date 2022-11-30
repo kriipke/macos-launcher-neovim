@@ -266,7 +266,7 @@ macos_hide_from_tasks no
 macos_menubar_title_max_length 25
 map kitty_mod+c clear_terminal scroll active
 map kitty_mod+e combine : new_window : next_layout
-kitty_mod ctrl+shift
+kitty_mod cmd
 map f1 launch --stdin-source=@screen_scrollback --stdin-add-formatting --type=overlay less +G -R
 map kitty_mod+g show_last_command_output
 map kitty_mod+escape kitty_shell window 
