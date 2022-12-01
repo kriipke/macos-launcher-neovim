@@ -292,6 +292,5 @@ fi
 export MANPATH PATH
 
 echo "$NVIM_CONFIG" > /tmp/neovim-kitty-launcher.conf
-/Applications/kitty.app/Contents/MacOS/kitty -c <(cat "$KITTY_CONFIG") /bin/zsh -c nvim -u /tmp/neovim-kitty-launcher.conf; exit;
+$HOMEBBREW_PREFIX/bin/kitty -c <(cat "$KITTY_CONFIG") $HOMEBREW_PREFIX/bin/zsh -c nvim -u /tmp/neovim-kitty-launcher.conf; exit;
 
-#/Applications/kitty.app/Contents/MacOS/kitty -c <(echo "$KITTY_CONFIG") nvim -u /tmp/neovim-kitty-launcher.conf
